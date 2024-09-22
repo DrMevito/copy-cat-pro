@@ -1,0 +1,8 @@
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+
+if (id) {
+    document.getElementById('parameter-value').innerHTML = `ID: ${id}`;
+} else {
+    document.getElementById('parameter-value').innerHTML = 'No ID parameter found';
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-logo">
+    <img src="logo.svg" alt="">
+        </div>
+        <div class="header-nav">
+            <button><img src="bolt.svg" alt="">New Order</button>
+           <img src="5%small.svg" alt="">
+            <div class="balance">0.00</div>
+        </div>
+    </header>
+
+    <main>
+    <div class="path">
+        <h4> Trade / Account /<Overview><span> 24217718</span></h4>
+    </div>
+    <section class="account-overview">
+        <h2>#24217718 - $5K High Stakes - 5K</h2>
+        <span class="status">Disabled</span>
+    </section>
+
+    <div class="acc-info">
+        <h4>Account info</h4>
+    </div>
+
+    <section class="account-info">
+        <div class="info-box profit-target">
+            <h3>Profit Target</h3>
+            <p id="p-target"></p>
+            <div class="target-bar">
+                <div class="fill" style="width: 80%;"></div>
+            </div>
+            <div class="low-p">
+                <p>$4,500 <br>Stopout Level</p>
+                <p>$5,400 <br> Target</p>
+            </div>
+
+        </div>
+
+        <div class="info-box daily-loss">
+            <h3>Daily Loss Level</h3>
+            <p id="loss"></p>
+            <div class="loss-bar">
+                <div class="fill" style="width: 30%;"></div>
+            </div>
+            <div class="low-p">
+                <p>$4,500 <br>Stopout Level</p>
+                <p>$5,400 <br> Target</p>
+            </div>
+        </div>
+
+        <div class="info-box profitable-days">
+            <h3>Profitable Days</h3>
+            <p>3 / 3</p>
+            <div class="loss-bar">
+                <div class="fill" style="width: 100%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="account-balance">
+        <h3>Account Balance</h3>
+        <div class="acc-balance">
+            <h6>P&L: <br> <span>+$707.91</span></h6> <h6> Equity: <br> <span>+$5,719.09</span> </h6> <h6> Balance: <br>
+                <span>+$5,719.09</span></h6>
+        </div>
+        <div class="balance-graph" id="">
+            <!-- Placeholder for the graph -->
+            <canvas id="balanceChart"></canvas>
+        </div>
+    </section>
+
+
+
+
+    <section class="open-trades">
+        <h3>Open Trades</h3>
+        <div class="trade-table">
+            <p>No Data</p>
+        </div>
+    </section>
+</main>
+
+
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        //fetch data from url
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const target = urlParams.get('target');
+
+        if (target) {
+            document.getElementById('p-target').innerHTML = `${target}`;
+        } else {
+            document.getElementById('p-target').innerHTML = 'No ID parameter found';
+        }
+
+        const loss = urlParams.get('loss');
+
+        if (loss) {
+            document.getElementById('loss').innerHTML = `${loss}`;
+        } else {
+            document.getElementById('loss').innerHTML = 'No ID parameter found';
+        }
+
+
+
+
+
+        // Sample data for the graph
+        const labels = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Account Balance',
+                data: [5300, 5020, 5700, 5070, 5000, 5050, 5719],
+                fill: true,
+                borderColor: '#0a57c5',
+                backgroundColor: 'rgba(10, 87, 197, 0.2)',
+                tension: 0, // Curved line effect 0.4
+                pointRadius: 0, // Hide points
+            }]
+        };
+
+        // Configuration options
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 5000,
+                        max: 5800,
+                        ticks: {
+                            stepSize: 200
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // Hide legend
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        };
+
+        // Render the chart
+        const balanceChart = new Chart(
+            document.getElementById('balanceChart'),
+            config
+        );
+    </script>
+</body>
+
+</html>
