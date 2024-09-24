@@ -13,85 +13,91 @@
 
     <header>
         <div class="header-logo">
-    <img src="logo.svg" alt="">
+            <img src="logo.svg" alt="">
         </div>
         <div class="header-nav">
             <button><img src="bolt.svg" alt="">New Order</button>
-           <img src="5%small.svg" alt="">
+            <img src="small.svg" alt="">
             <div class="balance">0.00</div>
+            <img src="bell.svg"  style="font-size: 16px; padding-left: 20px;" alt="">
+            <span class="profile"><img
+                    src="http://res.cloudinary.com/dvt6xbblx/image/upload/v1720527583/5ers-prod/profile-images/profile_83ddea00-e6a0-4a15-a5f0-01811503efbd.jpg"></span>
         </div>
     </header>
 
     <main>
-    <div class="path">
-        <h4> Trade / Account /<Overview><span> 24217718</span></h4>
-    </div>
-    <section class="account-overview">
-        <h2>#24217718 - $5K High Stakes - 5K</h2>
-        <span class="status">Disabled</span>
-    </section>
+        <div class="path">
+            <h4> Trade / Account /<Overview><span> 24217718</span></h4>
+        </div>
+        <section class="account-overview">
+            <h2>#24217718 - $5K High Stakes - 5K</h2>
+            <span class="status">Disabled</span>
+        </section>
 
-    <div class="acc-info">
-        <h4>Account info</h4>
-    </div>
+        <div class="acc-info">
+            <h4>Account info</h4>
+        </div>
 
-    <section class="account-info">
-        <div class="info-box profit-target">
-            <h3>Profit Target</h3>
-            <p id="p-target"></p>
-            <div class="target-bar">
-                <div class="fill" style="width: 80%;"></div>
+        <section class="account-info">
+            <div class="info-box profit-target">
+                <h3>Profit Target</h3>
+                <p id="p-target"></p>
+                <div class="target-bar">
+                    <div class="fill"></div>
+                </div>
+                <div class="low-p">
+                    <p>$4,500 <br>Stopout Level</p>
+                    <p>$5,400 <br> Target</p>
+                </div>
+
             </div>
-            <div class="low-p">
-                <p>$4,500 <br>Stopout Level</p>
-                <p>$5,400 <br> Target</p>
+
+            <div class="info-box daily-loss">
+                <h3>Daily Loss Level</h3>
+                <p id="loss"></p>
+                <div class="loss-bar">
+                    <div class="fill"></div>
+                </div>
+                <div class="low-p">
+                    <p>$4,500 <br>Stopout Level</p>
+                    <p>$5,400 <br> Target</p>
+                </div>
             </div>
 
-        </div>
-
-        <div class="info-box daily-loss">
-            <h3>Daily Loss Level</h3>
-            <p id="loss"></p>
-            <div class="loss-bar">
-                <div class="fill" style="width: 30%;"></div>
+            <div class="info-box profitable-days">
+                <h3>Profitable Days</h3>
+                <p>3 / 3</p>
+                <div class="days-bar">
+                    <div class="fill"></div>
+                </div>
             </div>
-            <div class="low-p">
-                <p>$4,500 <br>Stopout Level</p>
-                <p>$5,400 <br> Target</p>
+        </section>
+
+        <section class="account-balance">
+            <h3>Account Balance</h3>
+            <div class="acc-balance">
+                <h6>P&L: <br> <span>+$707.91</span></h6>
+                <h6> Equity: <br> <span>+$5,719.09</span> </h6>
+                <h6> Balance: <br>
+                    <span>+$5,719.09</span>
+                </h6>
             </div>
-        </div>
-
-        <div class="info-box profitable-days">
-            <h3>Profitable Days</h3>
-            <p>3 / 3</p>
-            <div class="loss-bar">
-                <div class="fill" style="width: 100%;"></div>
+            <div class="balance-graph" id="">
+                <!-- Placeholder for the graph -->
+                <canvas id="balanceChart"></canvas>
             </div>
-        </div>
-    </section>
-
-    <section class="account-balance">
-        <h3>Account Balance</h3>
-        <div class="acc-balance">
-            <h6>P&L: <br> <span>+$707.91</span></h6> <h6> Equity: <br> <span>+$5,719.09</span> </h6> <h6> Balance: <br>
-                <span>+$5,719.09</span></h6>
-        </div>
-        <div class="balance-graph" id="">
-            <!-- Placeholder for the graph -->
-            <canvas id="balanceChart"></canvas>
-        </div>
-    </section>
+        </section>
 
 
 
 
-    <section class="open-trades">
-        <h3>Open Trades</h3>
-        <div class="trade-table">
-            <p>No Data</p>
-        </div>
-    </section>
-</main>
+        <section class="open-trades">
+            <h3>Open Trades</h3>
+            <div class="trade-table">
+                <p>No Data</p>
+            </div>
+        </section>
+    </main>
 
 
     <!-- Include Chart.js from CDN -->
@@ -158,7 +164,7 @@
                     }
                 },
                 responsive: true,
-                maintainAspectRatio: true
+                maintainAspectRatio: false
             }
         };
 
